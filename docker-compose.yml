@@ -6,9 +6,21 @@ networks:
     attachable: true
 
 volumes:
-    prometheus: {}
-    grafana: {}
-    alertmanager: {}
+    prometheus:
+        driver: "cloudstor:aws"
+        driver_opts:
+          backing: relocatable
+          size: 25
+    grafana:
+        driver: "cloudstor:aws"
+        driver_opts:
+          backing: relocatable
+          size: 10
+    alertmanager:
+        driver: "cloudstor:aws"
+        driver_opts:
+          backing: relocatable
+          size: 10
 
 configs:
   caddy_config:
